@@ -1,8 +1,8 @@
-export async function fetchGameSesions() {
+export async function fetchGameSesions({signal}) {
     let url = 'https://dhs-dxty.onrender.com/api/v1/bikegame/game_sessions'
 
    
-    const response = await fetch(url);
+    const response = await fetch(url,  {signal: signal});
 
     if (!response.ok) {
       const error = new Error('An error occurred while fetching the data');

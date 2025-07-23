@@ -2,71 +2,79 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchGameSesions } from "../util/http";
 import LoadingIndicator from "../UI/LoadingIndicator";
 
-export default function GameDashboard (){
+export default function GameDashboard() {
+  const { data, isPending } = useQuery({
+    queryKey: ["sessions"],
+    queryFn: fetchGameSesions,
+  });
 
-    const {data, isPending} = useQuery({
-        queryKey: ['sessions'],
-        queryFn: fetchGameSesions
-    })
-
-//   const riderData = [
-//     { id: 1, rank: 1, playerName: "Peter", bicycle: "Canyon", time: "2:45:18" },
-//     { id: 2, rank: 2, playerName: "Mike", bicycle: "Specialized Tarmac", time: "2:47:32" },
-//     { id: 3, rank: 3, playerName: "Maxwel", bicycle: "Trek Madone", time: "2:49:15" },
-//     { id: 4, rank: 4, playerName: "David", bicycle: "Cervelo S5", time: "2:51:42" },
-//     { id: 5, rank: 5, playerName: "John", bicycle: "Giant Propel", time: "2:53:27" },
-//     { id: 6, rank: 6, playerName: "Maurice", bicycle: "Giant Propel", time: "2:50:20" }
-//   ];
-
-  if(isPending){
-    return <LoadingIndicator/>
-  }
-
+  let content;
+  
   let number = 0;
 
-  return (
-     <div className="p-4 max-w-3xl mx-auto">
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-gray-200 bg-gray-50">
-              <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">#</th>
-              <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">Player</th>
-              <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700 hidden sm:table-cell">Bicycle</th>
-              <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">Time</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {data.sessions.map((session) => {
-                number = number + 1;
-                return(
-                      <tr key={session.id} className="hover:bg-gray-50 transition-colors">
-                <td className="py-3 px-4 text-sm font-medium text-gray-900">
-                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
-                   session.id === 1 ? 'bg-yellow-100 text-yellow-800' :
-                   session.id=== 2 ? 'bg-blue-100 text-blue-800' :
-                    session.id === 3 ? 'bg-purple-100 text-purple-800' :
-                    'bg-gray-100 text-gray-800'
-                  }`}>
-                    {number}
-                  </span>
-                </td>
-                <td className="py-3 px-4 text-sm font-semibold text-gray-800">
-                  {session.player_name}
-                </td>
-                <td className="py-3 px-4 text-sm text-gray-600 hidden sm:table-cell">
-                  {session.bike_name}
-                </td>
-                <td className="py-3 px-4 text-sm font-bold text-gray-900">
-                  {session.time_played}
-                </td>
-              </tr>
-                )
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
+  if (isPending) {
+    content = <LoadingIndicator />;
+  }
 
+  if (data) {
+    content = (
+      <div className="p-4 max-w-5xl mx-auto">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-gray-200 bg-purple-200">
+                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                  #
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                  Player
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700 sm:table-cell">
+                  Bicycle
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {data.sessions.map((session) => {
+                number = number + 1;
+                return (
+                  <tr
+                    key={session.id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="py-3 px-4 text-sm font-medium text-gray-900">
+                      <span
+                        className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
+                         number % 2 ===  0
+                            ? "bg-purple-200 text-yellow-800"
+        
+                            : "bg-orange-100 text-gray-800"
+                        }`}
+                      >
+                        {number}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-sm font-semibold text-gray-800">
+                      {session.player_name}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-600 sm:table-cell">
+                      {session.bike_name}
+                    </td>
+                    <td className="py-3 px-4 text-sm font-bold text-gray-900">
+                      {session.time_played}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
+  return <>{content}</>;
+}
