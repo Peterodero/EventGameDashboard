@@ -1,18 +1,19 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DashboardHead from "./components/DashboardHead";
 import GameDashboard from "./components/GameDashboard";
 
-function App (){
+function App() {
+  const queryClient = new QueryClient();
 
   return (
-   <div className="p-4">
-    <DashboardHead/>
-    <GameDashboard/>
-   </div>
+    <QueryClientProvider client={queryClient}>
+      <DashboardHead />
+      <GameDashboard />
+    </QueryClientProvider>
   );
-};
+}
 
 export default App;
-
 
 // // import { TrophyIcon, FireIcon, ShieldCheckIcon, ClockIcon, StarIcon } from '@heroicons/react/24/solid'
 
@@ -83,7 +84,7 @@ export default App;
 //               <tr key={player.id} className="hover:bg-gray-750 transition-colors">
 //                 <td className="px-6 py-4 whitespace-nowrap">
 //                   <div className={`flex items-center ${
-//                     player.rank === 1 ? 'text-yellow-400' : 
+//                     player.rank === 1 ? 'text-yellow-400' :
 //                     player.rank <= 3 ? 'text-purple-400' : 'text-gray-300'
 //                   }`}>
 //                     {/* <TrophyIcon className="h-5 w-5 mr-2" /> */}
@@ -103,8 +104,8 @@ export default App;
 //                     <div className="w-full">
 //                       <div className="text-sm text-white mb-1">Lvl {player.level}</div>
 //                       <div className="w-full bg-gray-700 rounded-full h-1.5">
-//                         <div 
-//                           className="bg-gradient-to-r from-purple-500 to-blue-500 h-1.5 rounded-full" 
+//                         <div
+//                           className="bg-gradient-to-r from-purple-500 to-blue-500 h-1.5 rounded-full"
 //                           style={{ width: `${player.levelProgress}%` }}
 //                         ></div>
 //                       </div>
