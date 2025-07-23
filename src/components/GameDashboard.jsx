@@ -33,7 +33,7 @@ export default function GameDashboard() {
                   Bicycle
                 </th>
                 <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
-                  Time
+                  Time (s)
                 </th>
               </tr>
             </thead>
