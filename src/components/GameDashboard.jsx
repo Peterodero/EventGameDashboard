@@ -22,6 +22,8 @@ export default function GameDashboard (){
     return <LoadingIndicator/>
   }
 
+  let number = 0;
+
   return (
      <div className="p-4 max-w-3xl mx-auto">
       <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
@@ -35,8 +37,10 @@ export default function GameDashboard (){
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {data.sessions.map((session) => (
-              <tr key={session.id} className="hover:bg-gray-50 transition-colors">
+            {data.sessions.map((session) => {
+                number = number + 1;
+                return(
+                      <tr key={session.id} className="hover:bg-gray-50 transition-colors">
                 <td className="py-3 px-4 text-sm font-medium text-gray-900">
                   <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
                    session.id === 1 ? 'bg-yellow-100 text-yellow-800' :
@@ -44,7 +48,7 @@ export default function GameDashboard (){
                     session.id === 3 ? 'bg-purple-100 text-purple-800' :
                     'bg-gray-100 text-gray-800'
                   }`}>
-                    {session.id}
+                    {number}
                   </span>
                 </td>
                 <td className="py-3 px-4 text-sm font-semibold text-gray-800">
@@ -57,7 +61,8 @@ export default function GameDashboard (){
                   {session.time_played}
                 </td>
               </tr>
-            ))}
+                )
+            })}
           </tbody>
         </table>
       </div>
