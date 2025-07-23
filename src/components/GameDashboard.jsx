@@ -37,16 +37,16 @@ export default function GameDashboard (){
           <tbody className="divide-y divide-gray-100">
             {data.sessions.map((session) => (
               <tr key={session.id} className="hover:bg-gray-50 transition-colors">
-                {/* <td className="py-3 px-4 text-sm font-medium text-gray-900">
+                <td className="py-3 px-4 text-sm font-medium text-gray-900">
                   <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
-                    rider.rank === 1 ? 'bg-yellow-100 text-yellow-800' :
-                    rider.rank === 2 ? 'bg-blue-100 text-blue-800' :
-                    rider.rank === 3 ? 'bg-purple-100 text-purple-800' :
+                   session.id === 1 ? 'bg-yellow-100 text-yellow-800' :
+                   session.id=== 2 ? 'bg-blue-100 text-blue-800' :
+                    session.id === 3 ? 'bg-purple-100 text-purple-800' :
                     'bg-gray-100 text-gray-800'
                   }`}>
-                    {rider.rank}
+                    {session.id}
                   </span>
-                </td> */}
+                </td>
                 <td className="py-3 px-4 text-sm font-semibold text-gray-800">
                   {session.player_name}
                 </td>
