@@ -19,7 +19,7 @@ export default function GameDashboard() {
   if (data) {
     content = (
       <div className="p-4 max-w-5xl mx-auto">
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+        <div className=" rounded-lg shadow overflow-hidden border border-gray-100">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-200 bg-purple-200">
@@ -33,17 +33,17 @@ export default function GameDashboard() {
                   Bicycle
                 </th>
                 <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
-                  Time (s)
+                  Time (S)
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="bg-orange-300">
               {data.sessions.map((session) => {
                 number = number + 1;
                 return (
                   <tr
                     key={session.id}
-                    className="hover:bg-gray-50 transition-colors"
+                    className="hover:bg-orange-200 transition-colors"
                   >
                     <td className="py-3 px-4 text-sm font-medium text-gray-900">
                       <span

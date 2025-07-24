@@ -9,10 +9,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* 
+
 body{
-  background-color: #213547;
-} */
+  background-image: url('../src/assets/WhatsApp\ Image\ 2025-07-24\ at\ 07.41.15.jpeg.jpg');
+  padding-bottom: 30px;
+}
 
 .lds-ring-container{
    display: flex;
