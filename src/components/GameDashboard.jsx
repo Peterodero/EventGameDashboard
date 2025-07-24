@@ -29,9 +29,9 @@ export default function GameDashboard() {
                 <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700">
                   Player
                 </th>
-                <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700 sm:table-cell">
+                {/* <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700 sm:table-cell">
                   Bicycle
-                </th>
+                </th> */}
                 <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700">
                   Time (S)
                 </th>
@@ -60,9 +60,9 @@ export default function GameDashboard() {
                     <td className="py-3 px-4 text-sm font-semibold text-gray-800">
                       {session.player_name}
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-600 sm:table-cell">
+                    {/* <td className="py-3 px-4 text-sm text-gray-600 sm:table-cell">
                       {session.bike_name}
-                    </td>
+                    </td> */}
                     <td className="py-3 px-4 text-sm font-bold text-gray-900">
                       {session.time_played}
                     </td>
