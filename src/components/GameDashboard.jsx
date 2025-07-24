@@ -18,21 +18,21 @@ export default function GameDashboard() {
 
   if (data) {
     content = (
-      <div className="p-4 max-w-5xl mx-auto">
-        <div className=" rounded-lg shadow overflow-hidden border border-gray-100">
+      <div className="p-4 max-w-5xl mx-auto overflow-scroll">
+        <div className=" rounded-lg ">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-200 bg-purple-200">
-                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700">
                   #
                 </th>
-                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700">
                   Player
                 </th>
-                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700 sm:table-cell">
+                <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700 sm:table-cell">
                   Bicycle
                 </th>
-                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
+                <th className="py-5 px-4 text-left text-sm font-semibold text-gray-700">
                   Time (S)
                 </th>
               </tr>
